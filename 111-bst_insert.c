@@ -34,6 +34,7 @@ bst_t *bst_insert(bst_t **tree, int value)
 {
 	bst_t *current = *tree;
 	bst_t *parent = NULL;
+	bst_t *newnode;
 
 	if (tree == NULL)
 		return (NULL);
@@ -59,8 +60,7 @@ bst_t *bst_insert(bst_t **tree, int value)
 			return (NULL);
 		}
 	}
-
-	bst_t *newnode = bst_create_node(parent, value);
+	newnode = bst_create_node(parent, value);
 
 	if (value < parent->n)
 	{
