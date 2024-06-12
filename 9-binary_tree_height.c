@@ -1,12 +1,5 @@
 #include "binary_trees.h"
 
-/* Function to find the maximum between two numbers */
-size_t max(size_t a, size_t b)
-{
-    return (a > b) ? a : b;
-}
-
-
 /**
  * binary_tree_height - Measures the height of a binary tree
  *
@@ -16,13 +9,21 @@ size_t max(size_t a, size_t b)
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-    if (tree == NULL)
-    {
-        return -1;
-    }
+	size_t left = binary_tree_height(tree->left);
+	size_t right = binary_tree_height(tree->right);
+	int  h;
 
-    size_t left_height = binary_tree_height(tree->left);
-    size_t right_height = binary_tree_height(tree->right);
+	if (tree == NULL)
+		return (0);
 
-    return 1 + max(left_height, right_height);
+	if (left > right)
+	{
+		h = 1 + left;
+	}
+	else
+	{
+		h = 1 + right;
+	}
+
+	return (h - 1);
 }
